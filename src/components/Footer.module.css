@@ -1,0 +1,129 @@
+.footer {
+  padding-top: clamp(var(--space-8), 8vw, var(--space-10));
+  border-top: var(--hairline);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 3fr) minmax(0, 4fr);
+  column-gap: clamp(var(--space-6), 4vw, var(--space-8));
+  row-gap: var(--space-7);
+}
+
+.brand {
+  display: grid;
+  align-content: start;
+  gap: var(--space-5);
+}
+
+.brandText {
+  max-width: 24ch;
+  color: var(--text-muted);
+}
+
+.col {
+  display: grid;
+  align-content: start;
+  gap: var(--space-4);
+}
+
+.heading {
+  font-family: var(--font-body);
+  color: var(--text-muted);
+  font-size: var(--fs-micro);
+  font-weight: 500;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+}
+
+.links {
+  display: grid;
+}
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  color: var(--text);
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+@media (hover: hover) {
+  .link:hover,
+  .contact a:hover,
+  .social:hover {
+    color: var(--accent-soft);
+  }
+}
+
+.contacts {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.contact {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  min-height: 40px;
+}
+
+.contact a {
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+.contactIcon {
+  flex: none;
+  color: var(--text-muted);
+}
+
+.socials {
+  display: flex;
+  gap: var(--space-2);
+  margin-top: var(--space-2);
+  margin-left: calc(-1 * var(--space-3));
+}
+
+.social {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  color: var(--text);
+  border-radius: var(--radius);
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+.bottom {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3) var(--space-6);
+  margin-top: clamp(var(--space-8), 7vw, var(--space-9));
+  padding-block: var(--space-5) var(--space-6);
+  border-top: var(--hairline);
+  color: var(--text-muted);
+  font-size: var(--fs-small);
+}
+
+.bottom .link {
+  color: var(--text-muted);
+  font-size: var(--fs-small);
+}
+
+@media (max-width: 899px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .brand {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 479px) {
+  .grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

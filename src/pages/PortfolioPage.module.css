@@ -1,0 +1,133 @@
+.profile {
+  padding-block: clamp(var(--space-8), 7vw, var(--space-9)) var(--section-gap);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: clamp(var(--space-5), 3vw, var(--space-7));
+  align-items: center;
+}
+
+.media {
+  grid-column: 1 / span 5;
+  overflow: hidden;
+  border-radius: var(--radius);
+  background: var(--bg-alt);
+}
+
+.photo {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 962 / 1280;
+  object-fit: cover;
+}
+
+.text {
+  grid-column: 7 / span 6;
+  display: grid;
+  justify-items: start;
+}
+
+.role {
+  color: var(--text-muted);
+  font-size: var(--fs-small);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.name {
+  max-width: 12ch;
+  margin-top: var(--space-3);
+  font-size: var(--fs-h2);
+}
+
+.facts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, auto));
+  gap: var(--space-5) var(--space-8);
+  margin: var(--space-7) 0 0;
+  padding-top: var(--space-5);
+  border-top: var(--hairline);
+}
+
+.fact {
+  display: grid;
+  gap: var(--space-1);
+}
+
+.fact dt {
+  color: var(--text-muted);
+  font-size: var(--fs-small);
+}
+
+.fact dd {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--fs-h3);
+  font-weight: 300;
+  line-height: 1.2;
+}
+
+.facts,
+.areas {
+  justify-self: stretch;
+  max-width: 32rem;
+}
+
+.areas {
+  margin-top: var(--space-7);
+}
+
+.areasTitle {
+  font-family: var(--font-body);
+  color: var(--text-muted);
+  font-size: var(--fs-small);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.list {
+  margin-top: var(--space-3);
+  border-top: var(--hairline);
+}
+
+.list li {
+  padding-block: var(--space-3);
+  border-bottom: var(--hairline);
+}
+
+.cta {
+  margin-top: var(--space-7);
+}
+
+.works {
+  padding-bottom: var(--section-gap);
+}
+
+.worksTitle {
+  margin-bottom: var(--space-7);
+  font-size: var(--fs-h2);
+}
+
+@media (max-width: 899px) {
+  .grid {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: var(--space-7);
+  }
+
+  .media,
+  .text {
+    grid-column: 1;
+  }
+
+  .media {
+    width: min(100%, 420px);
+  }
+}
+
+@media (max-width: 639px) {
+  .cta {
+    width: 100%;
+  }
+}

@@ -1,0 +1,145 @@
+.hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: min(100svh, 56rem);
+  padding-top: var(--header-h);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.media {
+  position: absolute;
+  inset: 0 0 0 40%;
+  z-index: -1;
+  /* Единственный градиент сайта: функциональная маска, растворяющая край фото в фоне. */
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 34%);
+  mask-image: linear-gradient(to right, transparent 0%, #000 34%);
+}
+
+.media picture {
+  height: 100%;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  animation: photo-in 800ms var(--ease-out) both;
+}
+
+.inner {
+  padding-block: var(--space-9);
+}
+
+.content {
+  display: grid;
+  justify-items: start;
+  max-width: 48rem;
+}
+
+.quote,
+.blockquote {
+  margin: 0;
+}
+
+.title {
+  display: grid;
+  font-style: italic;
+  font-size: clamp(2.5rem, 5.2vw, 4.75rem);
+  line-height: var(--lh-display);
+  letter-spacing: -0.02em;
+}
+
+.line {
+  display: block;
+  animation: rise 640ms var(--ease-out) both;
+}
+
+.indent {
+  padding-left: 1.15em;
+  animation-delay: 90ms;
+}
+
+.author {
+  margin-top: var(--space-5);
+  padding-left: 1.15em;
+  color: var(--accent-soft);
+  font-size: var(--fs-small);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  animation: rise 600ms var(--ease-out) 150ms both;
+}
+
+.lead {
+  max-width: 26ch;
+  margin-top: var(--space-6);
+  color: var(--text-muted);
+  font-size: var(--fs-lead);
+  line-height: 1.55;
+  animation: rise 600ms var(--ease-out) 180ms both;
+}
+
+.action {
+  margin-top: var(--space-7);
+  animation: rise 600ms var(--ease-out) 200ms both;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0.01;
+    transform: translate3d(0, 18px, 0);
+  }
+}
+
+@keyframes photo-in {
+  from {
+    opacity: 0.01;
+    transform: scale(1.04);
+  }
+}
+
+@media (max-width: 899px) {
+  .hero {
+    align-items: flex-end;
+    min-height: min(100svh, 52rem);
+  }
+
+  .media {
+    inset: 0 0 auto;
+    height: 74%;
+    -webkit-mask-image: linear-gradient(to bottom, #000 45%, transparent 100%);
+    mask-image: linear-gradient(to bottom, #000 45%, transparent 100%);
+  }
+
+  .inner {
+    padding-block: var(--space-8) var(--space-7);
+  }
+
+  .indent {
+    padding-left: 0.9em;
+  }
+
+  .author {
+  margin-top: var(--space-5);
+  padding-left: 1.15em;
+  color: var(--accent-soft);
+  font-size: var(--fs-small);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  animation: rise 600ms var(--ease-out) 150ms both;
+}
+
+.lead {
+    margin-top: var(--space-5);
+  }
+
+  .action {
+    width: 100%;
+    margin-top: var(--space-6);
+  }
+
+  .action > * {
+    width: 100%;
+  }
+}

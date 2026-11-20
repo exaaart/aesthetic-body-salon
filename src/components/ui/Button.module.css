@@ -1,0 +1,106 @@
+.button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  min-height: var(--control-h);
+  padding: 0 var(--space-6);
+  border: 1px solid transparent;
+  border-radius: var(--radius);
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    background-color var(--dur-base) var(--ease-out),
+    border-color var(--dur-base) var(--ease-out),
+    color var(--dur-base) var(--ease-out);
+}
+
+.arrow {
+  flex: none;
+  transition: transform var(--dur-base) var(--ease-out);
+}
+
+.primary {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+.outline {
+  border-color: var(--line-strong);
+  color: var(--text);
+}
+
+.link {
+  min-height: 44px;
+  padding: 0;
+  gap: var(--space-2);
+  color: var(--accent-soft);
+}
+
+.link .label {
+  background: linear-gradient(currentColor, currentColor) 0 100% / 100% 1px no-repeat;
+  padding-bottom: 3px;
+  transition: background-size var(--dur-base) var(--ease-out);
+}
+
+@media (hover: hover) {
+  .primary:hover {
+    background: var(--accent-soft);
+  }
+
+  .outline:hover {
+    border-color: var(--accent-soft);
+    color: var(--accent-soft);
+  }
+
+  .link:hover .label {
+    background-size: 35% 1px;
+  }
+
+  .button:hover .arrow {
+    transform: translateX(4px);
+  }
+}
+
+.primary:active {
+  background: var(--accent-soft);
+}
+
+.button:disabled,
+.loading {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.block {
+  display: flex;
+  width: 100%;
+}
+
+.spinner {
+  flex: none;
+  width: 16px;
+  height: 16px;
+  border: 1.25px solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 639px) {
+  .button:not(.link) {
+    padding: 0 var(--space-5);
+  }
+}

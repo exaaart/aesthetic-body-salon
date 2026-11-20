@@ -1,0 +1,180 @@
+.section {
+  padding-block: var(--section-gap);
+}
+
+.head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-6);
+  margin-bottom: var(--space-8);
+}
+
+.titles {
+  display: grid;
+  gap: var(--space-4);
+  max-width: 36rem;
+}
+
+.title {
+  font-size: var(--fs-h2);
+}
+
+.subtitle {
+  color: var(--text-muted);
+  font-size: var(--fs-lead);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: clamp(var(--space-5), 3vw, var(--space-7));
+  border-bottom: var(--hairline);
+}
+
+.cell {
+  display: flex;
+}
+
+.item {
+  position: relative;
+  display: grid;
+  grid-template-rows: auto auto 1fr auto auto;
+  align-content: start;
+  width: 100%;
+  min-height: 17rem;
+  padding: var(--space-6) 0 var(--space-6);
+  border-top: var(--hairline);
+  text-align: left;
+  transition: transform var(--dur-base) var(--ease-out);
+}
+
+/* Линия, которая «прорисовывается» акцентом при наведении */
+.item::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--accent-soft);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 420ms var(--ease-out);
+}
+
+.icon {
+  color: var(--text-muted);
+  transition: color var(--dur-base) var(--ease-out);
+}
+
+.name {
+  margin-top: var(--space-7);
+  font-family: var(--font-display);
+  font-size: var(--fs-h3);
+  font-weight: 400;
+  line-height: 1.15;
+  text-wrap: balance;
+}
+
+.summary {
+  margin-top: var(--space-3);
+  max-width: 36ch;
+  color: var(--text-muted);
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}
+
+.price {
+  margin-top: var(--space-4);
+  color: var(--text);
+  font-size: 0.9375rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.more {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-top: var(--space-4);
+  color: var(--accent-soft);
+  font-size: var(--fs-small);
+  font-weight: 500;
+  opacity: 0;
+  transform: translate3d(-6px, 0, 0);
+  transition:
+    opacity var(--dur-base) var(--ease-out),
+    transform var(--dur-base) var(--ease-out);
+}
+
+.item:focus-visible {
+  outline-offset: 8px;
+}
+
+.item:focus-visible::before {
+  transform: scaleX(1);
+}
+
+.item:focus-visible .icon {
+  color: var(--accent-soft);
+}
+
+.item:focus-visible .more {
+  opacity: 1;
+  transform: none;
+}
+
+@media (hover: hover) {
+  .item:hover {
+    transform: translate3d(5px, 0, 0);
+  }
+
+  .item:hover::before {
+    transform: scaleX(1);
+  }
+
+  .item:hover .icon {
+    color: var(--accent-soft);
+  }
+
+  .item:hover .more {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* На тач-устройствах ссылка «Подробнее» видна всегда — ховера нет */
+@media (hover: none) {
+  .more {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (max-width: 899px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 639px) {
+  .head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-4);
+    margin-bottom: var(--space-7);
+  }
+
+  .grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .item {
+    min-height: 0;
+    padding-block: var(--space-5);
+  }
+
+  .name {
+    margin-top: var(--space-5);
+  }
+}

@@ -1,0 +1,152 @@
+/* Компактная страница: секции с умеренными отступами, карточка курса в две строки */
+.course,
+.photos,
+.review {
+  padding-block: clamp(var(--space-7), 6vw, var(--space-8));
+}
+
+.grid {
+  display: grid;
+  gap: var(--space-6);
+}
+
+.title {
+  font-size: var(--fs-h2);
+}
+
+/* Факты курса в ряд, кнопка записи — справа */
+.aside {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(16rem, 20rem);
+  gap: var(--space-6) var(--space-8);
+  align-items: end;
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--accent-soft);
+}
+
+.facts {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, auto));
+  justify-content: start;
+  gap: var(--space-5) var(--space-8);
+  margin: 0;
+}
+
+.fact {
+  display: grid;
+  gap: var(--space-1);
+}
+
+.fact dt {
+  color: var(--text-muted);
+  font-size: var(--fs-small);
+}
+
+.fact dd {
+  margin: 0;
+  font-size: 1.0625rem;
+}
+
+.factNote {
+  display: block;
+  margin-top: 2px;
+  color: var(--text-muted);
+  font-size: var(--fs-small);
+}
+
+.fact dd.price {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3vw, 2.5rem);
+  font-weight: 300;
+  line-height: 1.1;
+  font-variant-numeric: tabular-nums;
+}
+
+.actions {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.call {
+  margin-top: var(--space-2);
+  color: var(--text-muted);
+  font-size: var(--fs-small);
+}
+
+.call a {
+  color: var(--accent-soft);
+  white-space: nowrap;
+}
+
+.review {
+  background: var(--bg-alt);
+}
+
+.reviewTitle {
+  margin-bottom: var(--space-6);
+  font-size: var(--fs-h2);
+}
+
+.quotes {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(var(--space-6), 4vw, var(--space-8));
+  align-items: start;
+}
+
+.quote {
+  margin: 0;
+}
+
+.quote blockquote {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 1.6vw, 1.5rem);
+  font-weight: 300;
+  line-height: 1.4;
+}
+
+.quote blockquote p::before {
+  content: '«';
+}
+
+.quote blockquote p::after {
+  content: '»';
+}
+
+.author {
+  margin-top: var(--space-5);
+  padding-top: var(--space-4);
+  border-top: var(--hairline);
+  color: var(--text-muted);
+  font-size: var(--fs-small);
+}
+
+/* Фото идут сразу за карточкой курса — без двойного отступа */
+.photos {
+  padding-top: 0;
+}
+
+.photosTitle {
+  margin-bottom: var(--space-6);
+  font-size: var(--fs-h2);
+}
+
+@media (max-width: 1023px) {
+  .aside {
+    grid-template-columns: minmax(0, 1fr);
+    align-items: start;
+  }
+}
+
+@media (max-width: 639px) {
+  .facts {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 899px) {
+  .quotes {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

@@ -1,0 +1,80 @@
+:root {
+  /* Цвета (палитра из ТЗ) */
+  --bg: #120d17;
+  --bg-alt: #1b1421;
+  --accent: #b879e8;
+  --accent-soft: #d7b6f2;
+  --text: #f5eff8;
+  --text-muted: #b9afc1;
+  --line: #34263d;
+
+  /* Производные: граница полей 3.8:1 к фону (WCAG 1.4.11), ошибка, подложка оверлеев */
+  --line-strong: #7a6a86;
+  --error: #f4a9bd;
+  --on-accent: #120d17;
+  --scrim: rgb(10 7 13 / 0.86);
+  --scrim-strong: rgb(8 5 10 / 0.95);
+
+  /* Шрифты */
+  --font-display: 'Cormorant Garamond', 'Times New Roman', serif;
+  --font-body: 'Manrope', 'Segoe UI', system-ui, -apple-system, sans-serif;
+
+  /* Типографическая шкала */
+  --fs-h1: clamp(2.75rem, 7vw, 6rem);
+  --fs-h2: clamp(2.25rem, 4.4vw, 3.75rem);
+  --fs-h3: clamp(1.5rem, 2vw, 1.875rem);
+  --fs-quote: clamp(1.5rem, 2.6vw, 2.375rem);
+  --fs-lead: clamp(1.0625rem, 1.3vw, 1.25rem);
+  --fs-body: 1rem;
+  --fs-small: 0.875rem;
+  --fs-micro: 0.75rem;
+
+  --lh-display: 1.04;
+  --lh-heading: 1.1;
+  --lh-body: 1.65;
+
+  --tracking-wide: 0.22em;
+
+  /* Отступы */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+  --space-10: 128px;
+  --section-gap: clamp(80px, 12vw, 160px);
+
+  /* Сетка */
+  --container: 1320px;
+  --gutter: clamp(20px, 5vw, 72px);
+  /* Отступ от края экрана до контента контейнера; работает внутри container-type: inline-size */
+  --edge: max(var(--gutter), (100cqw - var(--container)) / 2);
+  --header-h: 72px;
+
+  /* Форма */
+  --radius: 2px;
+  --control-h: 52px;
+  --hairline: 1px solid var(--line);
+
+  /* Движение */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in: cubic-bezier(0.55, 0, 1, 0.45);
+  --dur-fast: 180ms;
+  --dur-base: 240ms;
+  --dur-slow: 600ms;
+
+  /* Слои */
+  --z-header: 100;
+  --z-menu: 200;
+  --z-overlay: 300;
+}
+
+@media (max-width: 899px) {
+  :root {
+    --header-h: 64px;
+  }
+}

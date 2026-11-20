@@ -1,0 +1,136 @@
+.section {
+  container-type: inline-size;
+  padding-block: var(--section-gap);
+}
+
+.head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-6);
+  margin-bottom: var(--space-7);
+}
+
+.title {
+  font-size: var(--fs-h2);
+}
+
+.controls {
+  display: flex;
+  gap: var(--space-3);
+}
+
+.control {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  color: var(--text);
+  transition:
+    border-color var(--dur-fast) var(--ease-out),
+    color var(--dur-fast) var(--ease-out),
+    opacity var(--dur-fast) var(--ease-out);
+}
+
+.control:disabled {
+  opacity: 0.35;
+}
+
+@media (hover: hover) {
+  .control:not(:disabled):hover {
+    border-color: var(--accent-soft);
+    color: var(--accent-soft);
+  }
+}
+
+.track {
+  --h: clamp(320px, 40vw, 560px);
+  position: relative;
+  display: flex;
+  gap: clamp(var(--space-4), 2vw, var(--space-5));
+  padding-inline: var(--edge);
+  padding-bottom: var(--space-4);
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: var(--edge);
+  scrollbar-width: none;
+}
+
+.track::-webkit-scrollbar {
+  display: none;
+}
+
+.item {
+  /* Плитка не выше натурального размера фото — без апскейла */
+  --item-h: min(var(--h), var(--native-h));
+  flex: none;
+  display: grid;
+  align-content: start;
+  gap: var(--space-3);
+  width: calc(var(--item-h) * (var(--ratio)));
+  max-width: min(64cqw, 860px);
+  scroll-snap-align: start;
+}
+
+.open {
+  display: block;
+  width: 100%;
+  border-radius: var(--radius);
+  cursor: zoom-in;
+}
+
+.frame {
+  display: block;
+  height: var(--item-h);
+  overflow: hidden;
+  background: var(--bg-alt);
+}
+
+.frame picture {
+  height: 100%;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 700ms var(--ease-out);
+}
+
+@media (hover: hover) {
+  .open:hover .image {
+    transform: scale(1.05);
+  }
+}
+
+.open:focus-visible .image {
+  transform: scale(1.05);
+}
+
+.caption {
+  color: var(--text-muted);
+  font-size: var(--fs-small);
+}
+
+@media (max-width: 639px) {
+  .head {
+    align-items: center;
+  }
+
+  .track {
+    --h: auto;
+  }
+
+  /* На телефоне кадры одинаковой ширины, следующий виден краем */
+  .item {
+    width: 80%;
+  }
+
+  .frame {
+    height: auto;
+    aspect-ratio: 4 / 5;
+  }
+}

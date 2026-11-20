@@ -1,0 +1,322 @@
+.form {
+  display: grid;
+  gap: var(--space-5);
+}
+
+.row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-5);
+}
+
+.field {
+  display: grid;
+  align-content: start;
+  gap: var(--space-2);
+}
+
+.label {
+  color: var(--text-muted);
+  font-size: var(--fs-small);
+  font-weight: 500;
+}
+
+.input {
+  width: 100%;
+  min-height: var(--control-h);
+  padding: 0 var(--space-4);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  background: var(--bg);
+  color: var(--text);
+  /* 16px+ — iOS не масштабирует страницу при фокусе */
+  font-size: 1rem;
+  line-height: 1.3;
+  caret-color: var(--accent-soft);
+  appearance: none;
+  transition:
+    border-color var(--dur-fast) var(--ease-out),
+    box-shadow var(--dur-fast) var(--ease-out);
+}
+
+.input::placeholder {
+  color: var(--text-muted);
+  opacity: 0.7;
+}
+
+@media (hover: hover) {
+  .input:hover {
+    border-color: var(--text-muted);
+  }
+}
+
+.input:focus-visible {
+  outline: none;
+  border-color: var(--accent-soft);
+  box-shadow: inset 0 0 0 1px var(--accent-soft);
+}
+
+.input[aria-invalid='true'] {
+  border-color: var(--error);
+}
+
+.input::-webkit-calendar-picker-indicator {
+  filter: invert(0.85);
+  cursor: pointer;
+}
+
+select.input {
+  padding-right: var(--space-8);
+  cursor: pointer;
+}
+
+select.input option,
+select.input optgroup {
+  background: var(--bg-alt);
+  color: var(--text);
+}
+
+.selectWrap {
+  position: relative;
+}
+
+.selectIcon {
+  position: absolute;
+  top: 50%;
+  right: var(--space-4);
+  color: var(--text-muted);
+  transform: translateY(-50%) rotate(90deg);
+  pointer-events: none;
+}
+
+.selectWrap:has(#booking-time) .selectIcon {
+  transform: translateY(-50%);
+}
+
+.modes {
+  display: grid;
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0;
+  border: 0;
+  min-width: 0;
+}
+
+.modeOptions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-3);
+}
+
+.mode {
+  position: relative;
+  display: grid;
+  align-content: center;
+  gap: 2px;
+  min-height: 64px;
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  background: var(--bg);
+  cursor: pointer;
+  transition:
+    border-color var(--dur-fast) var(--ease-out),
+    box-shadow var(--dur-fast) var(--ease-out);
+}
+
+/* Радиокнопка остаётся в DOM для клавиатуры и экранных дикторов */
+.modeInput {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+  pointer-events: none;
+}
+
+.modeTitle {
+  font-size: 0.9375rem;
+  font-weight: 500;
+}
+
+.modeNote {
+  color: var(--text-muted);
+  font-size: var(--fs-micro);
+  line-height: 1.4;
+}
+
+@media (hover: hover) {
+  .mode:hover {
+    border-color: var(--text-muted);
+  }
+}
+
+.mode:has(.modeInput:checked) {
+  border-color: var(--accent-soft);
+  box-shadow: inset 0 0 0 1px var(--accent-soft);
+}
+
+.mode:has(.modeInput:checked) .modeTitle {
+  color: var(--accent-soft);
+}
+
+.mode:has(.modeInput:focus-visible) {
+  outline: 1px solid var(--accent-soft);
+  outline-offset: 3px;
+}
+
+.hint {
+  color: var(--text-muted);
+  font-size: var(--fs-micro);
+}
+
+.error {
+  color: var(--error);
+  font-size: var(--fs-small);
+  line-height: 1.4;
+}
+
+.consent {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: var(--space-3);
+  align-items: start;
+}
+
+.checkbox {
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  margin: 0;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  background: var(--bg);
+  appearance: none;
+  cursor: pointer;
+  transition:
+    background-color var(--dur-fast) var(--ease-out),
+    border-color var(--dur-fast) var(--ease-out);
+}
+
+.checkbox::after {
+  content: '';
+  width: 10px;
+  height: 6px;
+  border-left: 1.5px solid var(--on-accent);
+  border-bottom: 1.5px solid var(--on-accent);
+  transform: translateY(-1px) rotate(-45deg) scale(0);
+  transition: transform var(--dur-fast) var(--ease-out);
+}
+
+.checkbox:checked {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.checkbox:checked::after {
+  transform: translateY(-1px) rotate(-45deg) scale(1);
+}
+
+.checkbox[aria-invalid='true'] {
+  border-color: var(--error);
+}
+
+.checkbox:focus-visible {
+  outline-offset: 3px;
+}
+
+.consentLabel {
+  color: var(--text-muted);
+  font-size: var(--fs-small);
+  line-height: 1.55;
+  cursor: pointer;
+}
+
+.inlineLink {
+  color: var(--accent-soft);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+@media (hover: hover) {
+  .inlineLink:hover {
+    color: var(--text);
+  }
+}
+
+.honeypot {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.alert {
+  padding: var(--space-4) var(--space-5);
+  border: 1px solid var(--error);
+  border-radius: var(--radius);
+  color: var(--text);
+  font-size: var(--fs-small);
+}
+
+.alertNote {
+  margin-top: var(--space-1);
+  color: var(--text-muted);
+}
+
+.result {
+  display: grid;
+  justify-items: start;
+  gap: var(--space-5);
+}
+
+.result:focus-visible {
+  outline: none;
+}
+
+.resultText {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 2.4vw, 1.875rem);
+  font-weight: 300;
+  line-height: 1.3;
+  max-width: 28ch;
+}
+
+.phoneLink {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  min-height: 44px;
+  color: var(--accent-soft);
+  font-size: 1.375rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.resultNote {
+  color: var(--text-muted);
+  font-size: var(--fs-small);
+}
+
+.resultActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: var(--space-2);
+}
+
+@media (max-width: 639px) {
+  .modeOptions {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .row {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .resultActions,
+  .resultActions > * {
+    width: 100%;
+  }
+}
